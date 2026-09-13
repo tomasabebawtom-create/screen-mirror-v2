@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Screen Mirror Viewer</title>
+</head>
+<body>
+<h2>Screen Mirror Viewer</h2>
+<p id="status">Connecting...</p>
+<script>
+const ws = new WebSocket('wss://disturbed-circumstances-generates-vhs.trycloudflare.com');
+ws.onopen = function() {
+  document.getElementById('status').innerText = 'Connected to signaling server';
+};
+ws.onclose = function() {
+  document.getElementById('status').innerText = 'Disconnected - retrying...';
+};
+ws.onerror = function(err) {
+  document.getElementById('status').innerText = 'Error connecting';
+};
+</script>
+</body>
+</html>
